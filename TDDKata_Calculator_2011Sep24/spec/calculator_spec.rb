@@ -40,5 +40,12 @@ describe "My Calculator's add method'" do
     result.should equal 16
   end
 
+  it "should reject multiple delimiter input, whether comma or newline" do
+    lambda {
+      sut = Calculator.new
+      sut.add("3,5\n,8")
+    }.should raise_exception(ArgumentError, "Multiple delimiters not allowed.")
+  end
+
 
 end
