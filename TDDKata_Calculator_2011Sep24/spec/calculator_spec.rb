@@ -34,4 +34,11 @@ describe "My Calculator's add method'" do
     result.should equal expected
   end
 
+  it "should return sum for a comma and/or newline-separated input" do
+    sut = Calculator.new
+    result = sut.add("3,5\n8")
+    result.should equal 16
+  end
+
+
 end
