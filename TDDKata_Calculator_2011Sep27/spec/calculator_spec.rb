@@ -33,4 +33,10 @@ describe "Calculator Add method" do
     result.should equal expected
   end
 
+  it "should handle new-lines as part of comma-delimited input params" do
+    sut = Calculator.new
+    result = sut.add("4,5\n8")
+    result.should equal 17
+  end
+
 end
