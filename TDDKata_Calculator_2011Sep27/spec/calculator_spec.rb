@@ -33,7 +33,7 @@ describe "Calculator Add method" do
     result.should equal expected
   end
 
-  it "should handle new-lines as part of comma-delimited input params" do
+  it "should handle new-line delimiters as part of comma-delimited input params" do
     sut = Calculator.new
     result = sut.add("4,5\n8")
     result.should equal 17
@@ -44,6 +44,12 @@ describe "Calculator Add method" do
       sut = Calculator.new
       result = sut.add("4,5\n,8")
     }.should raise_exception(ArgumentError, "Multiple delimiters not allowed.")
+  end
+
+  it "should handle custom delimiters as part of comma-delimited input params" do
+    sut = Calculator.new
+    result = sut.add("//%\n4,5\n8%5")
+    result.should equal 22
   end
 
 
