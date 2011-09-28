@@ -20,4 +20,17 @@ describe "Calculator Add method" do
     result.should equal 9
   end
 
+  it "should return sum for a any-length comma-delimited input param" do
+    how_many = rand(999)
+    numbers_to_add = ""
+    expected = 0
+    (1..how_many).each do |i|
+      numbers_to_add += i.to_s + ','
+      expected += i
+    end
+    sut = Calculator.new
+    result = sut.add(numbers_to_add)
+    result.should equal expected
+  end
+
 end
