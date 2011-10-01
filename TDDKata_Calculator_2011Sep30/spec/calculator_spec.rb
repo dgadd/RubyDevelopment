@@ -4,8 +4,8 @@ require "../calculator"
 describe "Calculator Adds" do
 
   it "should return 0 for a zero-length input" do
-
-    #To change this template use File | Settings | File Templates.
-    true.should == false
+    sut = Calculator.new
+    result = sut.add ""
+    result.should equal 0
   end
 end
