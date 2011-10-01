@@ -1,12 +1,16 @@
 class Calculator
 
-def handle_newline_delimiters(numbers_to_add)
-  numbers_to_add.sub!("\n", ",")
-end
+  def handle_newline_delimiters(numbers_to_add)
+    numbers_to_add.sub!("\n", ",")
+  end
 
-  # To change this template use File | Settings | File Templates.
+  def reject_multiple_delimiters(numbers_to_add)
+    raise(ArgumentError, "You cannot use multiple delimiters.") if numbers_to_add.include?(",,")
+  end
+
   def add(numbers_to_add)
     handle_newline_delimiters(numbers_to_add)
+    reject_multiple_delimiters(numbers_to_add)
     return sum(numbers_to_add.split(',')) if numbers_to_add.include?(",")
     return numbers_to_add.to_i if numbers_to_add.length > 0
     0

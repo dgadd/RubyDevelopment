@@ -37,4 +37,11 @@ describe "Calculator Adds" do
     result.should equal 11
   end
 
+  it "should reject multiple delimiters" do
+    lambda {
+      sut = Calculator.new
+      sut.add "3,5\n,3"
+    }.should raise_exception(ArgumentError, "You cannot use multiple delimiters.")
+  end
+
 end
