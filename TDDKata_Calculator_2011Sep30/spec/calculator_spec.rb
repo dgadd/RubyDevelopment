@@ -31,4 +31,10 @@ describe "Calculator Adds" do
     result.should equal expected
   end
 
+  it "should return sum for a newline delimited input" do
+    sut = Calculator.new
+    result = sut.add "3,5\n3"
+    result.should equal 11
+  end
+
 end
