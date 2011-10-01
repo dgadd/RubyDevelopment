@@ -50,4 +50,12 @@ describe "Calculator Adds" do
     result.should equal 19
   end
 
+  it "should reject negative numbers" do
+    lambda {
+      sut = Calculator.new
+      sut.add "3,5\n3,-5,-8"
+    }.should raise_exception(ArgumentError, "You cannot use negative numbers: -5,-8,")
+  end
+
+
 end

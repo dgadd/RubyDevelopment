@@ -21,9 +21,19 @@ class Calculator
     numbers_to_add = handle_custom_delimiters(numbers_to_add)
     handle_newline_delimiters(numbers_to_add)
     reject_multiple_delimiters(numbers_to_add)
+    reject_negative_numbers(numbers_to_add) if numbers_to_add.include?(",")
     return sum(numbers_to_add.split(',')) if numbers_to_add.include?(",")
     return numbers_to_add.to_i if numbers_to_add.length > 0
     0
+  end
+
+  def reject_negative_numbers(numbers_to_add)
+    numbers_array = numbers_to_add.split(",")
+    negative_numbers = ""
+    numbers_array.each do |i|
+      negative_numbers += i + "," if i.to_i < 0
+    end
+    raise(ArgumentError, "You cannot use negative numbers: " + negative_numbers) if negative_numbers.length > 0
   end
 
   def sum(numbers_array)
