@@ -21,4 +21,14 @@ describe "Calculator Adds" do
     result.should equal 8
   end
 
+  it "should return sum for a any length comma-delimited string input" do
+    how_many = rand(999)
+    numbers_to_add = ""
+    expected = 0
+    (1..how_many).each { | i | numbers_to_add += i.to_s + ","; expected += i;  }
+    sut = Calculator.new
+    result = sut.add numbers_to_add
+    result.should equal expected
+  end
+
 end
