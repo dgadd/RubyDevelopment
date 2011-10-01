@@ -44,4 +44,10 @@ describe "Calculator Adds" do
     }.should raise_exception(ArgumentError, "You cannot use multiple delimiters.")
   end
 
+  it "should return sum for a custom delimited input" do
+    sut = Calculator.new
+    result = sut.add "//%\n3,5\n3%8"
+    result.should equal 19
+  end
+
 end
