@@ -39,5 +39,13 @@ describe "Calculator" do
       result = sut.add "4,5\n3"
       result.should equal 12
     end
+
+    it("should reject multiple delimiters") do
+      expect {
+        sut = Calculator.new
+        result = sut.add "4,5\n,3"
+      }.should raise_error ArgumentError, "Multiple delimiters are not allowed"
+    end
+
   end
 end

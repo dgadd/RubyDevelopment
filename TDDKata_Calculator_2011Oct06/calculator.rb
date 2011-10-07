@@ -9,8 +9,13 @@ class Calculator
     numbers_to_add.sub!("\n", ",")
   end
 
+  def reject_multiple_delimiters(numbers_to_add)
+    raise(ArgumentError, "Multiple delimiters are not allowed") if numbers_to_add.include?(",,")
+  end
+
   def add(numbers_to_add)
     handle_newline_delimiters(numbers_to_add)
+    reject_multiple_delimiters(numbers_to_add)
     return sum(numbers_to_add) if (numbers_to_add.include?(","))
     return numbers_to_add.to_i if numbers_to_add.length > 0
     0
