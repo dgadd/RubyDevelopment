@@ -53,5 +53,12 @@ describe "Calculator" do
       result.should equal 15
     end
 
+    it("should reject negative numbers") do
+      expect {
+        sut = Calculator.new
+        result = sut.add "4,5\n3,-5,-7"
+      }.should raise_error ArgumentError, "Negative numbers are not allowed: -5,-7,"
+    end
+
   end
 end
