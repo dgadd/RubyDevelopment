@@ -15,5 +15,11 @@ describe "Calculator" do
       result.should equal 4
     end
 
+    it("should return sum for comma-delimited string input") do
+      sut = Calculator.new
+      result = sut.add "4,5"
+      result.should equal 9
+    end
+
   end
 end
