@@ -47,5 +47,11 @@ describe "Calculator" do
       }.should raise_error ArgumentError, "Multiple delimiters are not allowed"
     end
 
+    it("should return sum for custom delimiter string input") do
+      sut = Calculator.new
+      result = sut.add "//%\n4,5\n3%3"
+      result.should equal 15
+    end
+
   end
 end
