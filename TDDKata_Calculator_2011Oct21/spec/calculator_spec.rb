@@ -1,10 +1,11 @@
 require "rspec"
+require "../calculator"
 
-describe "Add method" do
+describe "My Calculator's add method'" do
 
-  it "should return 0 from an empty string" do
-
-    #To change this template use File | Settings | File Templates.
-    true.should == false
+  it "should return 0 for a zero-length string input" do
+    sut = Calculator.new
+    result = sut.add("")
+    result.should equal 0
   end
 end
